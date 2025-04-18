@@ -14,18 +14,18 @@
         /* Estilos personalizados y configuración de Tailwind */
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Desplazamiento suave */
+            scroll-behavior: smooth;
         }
         /* Colores personalizados */
-        .bg-primary { background-color: #E0F2FE; } /* Azul claro suave */
-        .text-primary { color: #0C4A6E; } /* Azul oscuro */
-        .bg-secondary { background-color: #F9FAFB; } /* Gris muy claro */
-        .text-accent { color: #10B981; } /* Verde menta */
+        .bg-primary { background-color: #E0F2FE; }
+        .text-primary { color: #0C4A6E; }
+        .bg-secondary { background-color: #F9FAFB; }
+        .text-accent { color: #10B981; }
         .btn-whatsapp {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366; /* Color de WhatsApp */
+            background-color: #25D366;
             color: white;
             padding: 15px;
             border-radius: 50%;
@@ -47,17 +47,17 @@
         }
         /* Asegurar que la imagen de perfil cubra el círculo */
         .profile-img {
-            object-fit: cover; /* Cubre el área sin distorsionar */
-            object-position: center; /* Centra la imagen */
+            object-fit: cover;
+            object-position: center;
         }
         /* Ajuste para tarjetas de servicio para que tengan la misma altura */
         .service-card {
             display: flex;
             flex-direction: column;
-            height: 100%; /* Asegura que todas las tarjetas ocupen el mismo alto en la fila */
+            height: 100%;
         }
          .service-card p {
-            flex-grow: 1; /* Hace que el párrafo crezca para llenar el espacio */
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -68,12 +68,11 @@
             <div class="text-lg sm:text-xl font-bold text-primary">
                 <i class="fas fa-shoe-prints mr-2 text-accent"></i> Podología Clínica Constanza Cortés
             </div>
-            <div class="hidden sm:block"> {/* Ocultar en pantallas pequeñas */}
+            <div class="hidden sm:block">
                 <a href="#servicios" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Servicios</a>
                 <a href="#contacto" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
                 <a href="#tips" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Consejos</a>
             </div>
-             {/* Menú hamburguesa para móviles (opcional, no implementado aquí) */}
         </nav>
     </header>
 
@@ -103,7 +102,7 @@
                 <div class="bg-secondary p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-accent text-4xl mb-4"><i class="fas fa-hand-holding-medical"></i></div>
                     <h3 class="text-xl font-semibold text-primary mb-2">Tratamientos Generales</h3>
-                    <p class="text-gray-600">Onicocriptosis (uña encarnada), tratamiento de hongos (onicomicosis), eliminación de callosidades y durezas.</p> {/* Eliminado verrugas plantares */}
+                    <p class="text-gray-600">Onicocriptosis (uña encarnada), tratamiento de hongos (onicomicosis), eliminación de callosidades y durezas.</p>
                 </div>
                 <div class="bg-secondary p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-accent text-4xl mb-4"><i class="fas fa-user-nurse"></i></div>
@@ -121,18 +120,16 @@
                     <p class="text-gray-600">Consejos y cuidados para mantener la salud de tus pies y prevenir futuras afecciones.</p>
                 </div>
                 <div class="bg-secondary p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-accent text-4xl mb-4"><i class="fas fa-paint-roller"></i></div> {/* Ícono sugerido */}
-                    <h3 class="text-xl font-semibold text-primary mb-2">Reconstrucción Ungueal</h3>
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-hammer"></i></div> <h3 class="text-xl font-semibold text-primary mb-2">Reconstrucción Ungueal</h3>
                     <p class="text-gray-600">Aplicación de Polygel medicamentado en uñas deformadas por onicomicosis u otras patologías.</p>
                 </div>
                 <div class="bg-secondary p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="text-accent text-4xl mb-4"><i class="fas fa-users-gear"></i></div> {/* Ícono sugerido */}
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-users-gear"></i></div>
                     <h3 class="text-xl font-semibold text-primary mb-2">Atención Especializada</h3>
                     <p class="text-gray-600">Jovenes, niños, embarazadas, deportistas y trabajadores que utilicen zapatos de seguridad.</p>
                 </div>
                 <div class="bg-secondary p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 service-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="text-accent text-4xl mb-4"><i class="fas fa-hand-sparkles"></i></div> {/* Ícono sugerido */}
-                    <h3 class="text-xl font-semibold text-primary mb-2">Reflexología Podal</h3>
+                    <div class="text-accent text-4xl mb-4"><i class="fas fa-shoe-prints"></i></div> <h3 class="text-xl font-semibold text-primary mb-2">Reflexología Podal</h3>
                     <p class="text-gray-600">Técnica de masaje que estimula puntos de los pies, que corresponden con órganos y partes del cuerpo. Aliviando dolores, reduciendo estrés, mejorando la circulación y eliminando toxinas.</p>
                 </div>
             </div>
@@ -212,12 +209,6 @@
 
                 <div class="w-full md:w-2/3 bg-white p-8 rounded-lg shadow-lg" data-aos="fade-left" data-aos-delay="100">
                     <h3 class="text-2xl font-semibold text-primary mb-6">Envía tu Consulta</h3>
-                    {/*
-                       IMPORTANTE: Este formulario usa 'mailto:'. Al enviarlo, intentará abrir
-                       el programa de correo electrónico predeterminado del usuario (Outlook, Mail, etc.)
-                       con los datos completados. NO envía el correo directamente desde la página web.
-                       Para un envío directo, se necesita un servicio externo (ej. Formspree) o un backend.
-                    */}
                     <form id="contact-form" action="mailto:podologiaclinica.coni@gmail.com" method="POST" enctype="text/plain">
                         <div class="mb-4">
                             <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
@@ -235,7 +226,6 @@
                             <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje:</label>
                             <textarea id="mensaje" name="Mensaje" rows="4" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Escribe tu consulta o el motivo de tu contacto..."></textarea>
                         </div>
-                        {/* Nota: El 'name' de los inputs será el asunto/cuerpo en el mailto */}
                         <input type="hidden" name="subject" value="Consulta desde Landing Page Podología">
                         <div class="flex items-center justify-between">
                             <button type="submit" class="bg-accent hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105">
@@ -243,7 +233,6 @@
                             </button>
                         </div>
                     </form>
-                    {/* Mensaje de confirmación eliminado ya que mailto lo maneja el cliente de correo */}
                 </div>
             </div>
         </div>
@@ -272,18 +261,13 @@
     <script>
         // Inicializar AOS (Animate on Scroll)
         AOS.init({
-            duration: 800, // Duración de la animación en ms
-            once: true, // La animación ocurre solo una vez por elemento
-            offset: 50, // Offset (en px) desde el borde original del trigger
+            duration: 800,
+            once: true,
+            offset: 50,
         });
 
         // Script para el año actual en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Ya no se necesita el script del formulario porque usamos mailto:
-        // const contactForm = document.getElementById('contact-form');
-        // const confirmationMessage = document.getElementById('confirmation-message');
-        // contactForm.addEventListener('submit', function(event) { ... });
     </script>
 
 </body>
