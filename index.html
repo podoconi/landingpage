@@ -59,10 +59,21 @@
          .service-card p {
             flex-grow: 1;
         }
+        /* Mejoras visuales adicionales */
+        #contact-form input, #contact-form textarea {
+            border-radius: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #contact-form input:focus, #contact-form textarea:focus {
+            border-color: #10B981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+        }
+        #contact-form button[type="submit"] {
+            border-radius: 24px;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
-
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="text-lg sm:text-xl font-bold text-primary">
@@ -75,7 +86,6 @@
             </div>
         </nav>
     </header>
-
     <section id="bienvenida" class="bg-primary py-20 px-6 text-center">
         <div class="container mx-auto">
             <div data-aos="fade-up">
@@ -86,7 +96,7 @@
                 <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Constanza Cortés</h1>
                 <p class="text-xl text-gray-700 mb-8">Podóloga clínica de nivel técnico superior - ROL 837964</p>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                    Cuidado experto para la salud de tus pies en la comodidad de tu hogar. Atención Profesional a Domicilio. Registro Superintendencia de Salud vigente.
+                    Cuidado experto para la salud de tus pies en la comodidad de tu hogar. Atención Profesional a Domicilio.
                 </p>
                 <a href="#contacto" class="bg-accent hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105">
                     Agenda tu Visita
@@ -94,7 +104,6 @@
             </div>
         </div>
     </section>
-
     <section id="servicios" class="py-16 px-6 bg-white">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up">Nuestros Servicios Podológicos</h2>
@@ -135,7 +144,6 @@
             </div>
         </div>
     </section>
-
     <section id="testimonios" class="py-16 px-6 bg-primary">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up">Lo que dicen nuestros pacientes</h2>
@@ -155,7 +163,6 @@
             </div>
             </div>
     </section>
-
     <section id="tips" class="py-16 px-6 bg-white">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold text-primary mb-8" data-aos="fade-up">Consejos para tus Pies</h2>
@@ -170,7 +177,6 @@
             </div>
         </div>
     </section>
-
     <section id="contacto" class="py-16 px-6 bg-secondary">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up">Contacta y Agenda tu Hora</h2>
@@ -206,30 +212,28 @@
                         <i class="fab fa-whatsapp mr-2"></i> Chatear por WhatsApp
                     </a>
                 </div>
-
-                <div class="w-full md:w-2/3 bg-white p-8 rounded-lg shadow-lg" data-aos="fade-left" data-aos-delay="100">
+                <div class="w-full md:w-2/3 bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-left" data-aos-delay="100">
                     <h3 class="text-2xl font-semibold text-primary mb-6">Envía tu Consulta</h3>
-                    <form id="contact-form" action="mailto:podologiaclinica.coni@gmail.com" method="POST" enctype="text/plain">
+                    <form id="contact-form">
                         <div class="mb-4">
                             <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-                            <input type="text" id="nombre" name="Nombre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Tu nombre completo">
+                            <input type="text" id="nombre" name="nombre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Tu nombre completo">
                         </div>
                         <div class="mb-4">
                             <label for="correo" class="block text-gray-700 text-sm font-bold mb-2">Tu Correo (para responderte):</label>
-                            <input type="email" id="correo" name="Correo_Remitente" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="tu.correo@ejemplo.com">
+                            <input type="email" id="correo" name="correo" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="tu.correo@ejemplo.com">
                         </div>
                         <div class="mb-4">
                             <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono (Opcional):</label>
-                            <input type="tel" id="telefono" name="Telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="+56 9 1234 5678">
+                            <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="+56 9 1234 5678">
                         </div>
                         <div class="mb-6">
                             <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje:</label>
-                            <textarea id="mensaje" name="Mensaje" rows="4" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Escribe tu consulta o el motivo de tu contacto..."></textarea>
+                            <textarea id="mensaje" name="mensaje" rows="4" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Escribe tu consulta o el motivo de tu contacto..."></textarea>
                         </div>
-                        <input type="hidden" name="subject" value="Consulta desde Landing Page Podología">
                         <div class="flex items-center justify-between">
                             <button type="submit" class="bg-accent hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105">
-                                Enviar Consulta por Correo
+                                Enviar Consulta
                             </button>
                         </div>
                     </form>
@@ -237,11 +241,9 @@
             </div>
         </div>
     </section>
-
     <a href="https://wa.me/56989611241?text=Hola%20Constanza%2C%20me%20gustaría%20consultar%20por%20tus%20servicios%20de%20podología." target="_blank" class="btn-whatsapp animate-pulse-whatsapp" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
-
     <footer class="bg-gray-800 text-gray-300 py-8 px-6">
         <div class="container mx-auto text-center">
             <p class="mb-2">&copy; <span id="current-year"></span> Podología Clínica Constanza Cortés. Todos los derechos reservados.</p>
@@ -256,8 +258,8 @@
             </div>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         // Inicializar AOS (Animate on Scroll)
         AOS.init({
@@ -265,10 +267,45 @@
             once: true,
             offset: 50,
         });
-
         // Script para el año actual en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 
+        // Inicializar EmailJS con tu Public Key
+        emailjs.init("bf16gZkkt8jlh-sik");
+
+        // Escuchar el evento de envío del formulario
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado
+
+            // Mostrar un mensaje de carga
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+
+            // Obtener los valores del formulario
+            const formData = {
+                nombre: this.nombre.value,
+                correo: this.correo.value,
+                telefono: this.telefono.value || 'No proporcionado',
+                mensaje: this.mensaje.value
+            };
+
+            // Enviar el correo usando EmailJS
+            emailjs.send('service_nqca32f', 'template_h2v9hjf', formData)
+                .then(function(response) {
+                    console.log('Correo enviado con éxito:', response);
+                    alert('¡Tu mensaje ha sido enviado con éxito!');
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    console.error('Error al enviar el correo:', error);
+                    alert('Hubo un error al enviar tu mensaje. Por favor, inténtalo nuevamente.');
+                })
+                .finally(function() {
+                    // Restaurar el botón de envío
+                    submitButton.textContent = 'Enviar Consulta';
+                    submitButton.disabled = false;
+                });
+        });
+    </script>
 </body>
 </html>
