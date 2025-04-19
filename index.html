@@ -171,14 +171,20 @@
     <section id="tips" class="py-16 px-6 bg-white">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold text-primary mb-8" data-aos="fade-up">Consejos para tus Pies</h2>
-            <div class="bg-secondary p-8 rounded-lg shadow-md max-w-3xl mx-auto consejo-container" data-aos="zoom-in">
-                <i class="fas fa-lightbulb text-accent text-4xl mb-4"></i>
-                <p class="text-xl text-gray-700 italic consejo-container">
-                    "Elige calzado que te acompañe, no que te dañe. Asegúrate de que tu calzado sea cómodo, flexible y adecuado a tu tipo de pisada. Evita los tacos altos o los zapatos apretados. Tus pies deben sentirse acompañados, no castigados."
-                </p>
-                <p class="text-lg text-gray-600 mt-4 consejo-container">
-                    Usa calzado adecuado a tu talla y actividad, evita andar descalzo en lugares públicos húmedos y revisa tus pies regularmente en busca de cambios.
-                </p>
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Navigation arrows -->
+                <button onclick="prevTip()" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-gray-300 text-gray-700 rounded-full p-3 hover:bg-accent hover:text-white transition-colors shadow-md">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="bg-secondary p-8 rounded-lg shadow-md consejo-container" data-aos="zoom-in">
+                    <i class="fas fa-lightbulb text-accent text-4xl mb-4"></i>
+                    <p id="tip-text" class="text-xl text-gray-700 italic consejo-container transition-opacity duration-300 ease-in-out"></p>
+                </div>
+
+                <button onclick="nextTip()" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-gray-300 text-gray-700 rounded-full p-3 hover:bg-accent hover:text-white transition-colors shadow-md">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -274,6 +280,79 @@
         });
         // Script para el año actual en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        // Tips array
+        const tips = [
+            "Elige calzado que te acompañe, no que te dañe. Asegúrate de que tu calzado sea cómodo, flexible y adecuado a tu tipo de pisada.",
+            "Seca bien tus pies después de la ducha, especialmente entre los dedos, para prevenir hongos.",
+            "Cambia tus calcetines diariamente y usa preferentemente materiales que absorban la humedad.",
+            "Revisa tus pies regularmente en busca de cambios, especialmente si eres diabético.",
+            "Hidrata tus pies diariamente, pero evita aplicar crema entre los dedos.",
+            "Corta las uñas en línea recta para prevenir uñas encarnadas.",
+            "Evita caminar descalzo en lugares públicos húmedos como piscinas o duchas."
+        ];
+
+        let currentTipIndex = 0;
+        let tipInterval;
+
+        // Función para mostrar el consejo actual
+        function showCurrentTip() {
+            const tipElement = document.getElementById('tip-text');
+            tipElement.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                tipElement.textContent = tips[currentTipIndex];
+                tipElement.classList.remove('opacity-0');
+            }, 300);
+        }
+
+        // Función para el siguiente consejo
+        function nextTip() {
+            currentTipIndex = (currentTipIndex + 1) % tips.length;
+            showCurrentTip();
+            resetInterval();
+        }
+
+        // Función para el consejo anterior
+        function prevTip() {
+            currentTipIndex = (currentTipIndex - 1 + tips.length) % tips.length;
+            showCurrentTip();
+            resetInterval();
+        }
+
+        // Función para reiniciar el intervalo
+        function resetInterval() {
+            clearInterval(tipInterval);
+            startInterval();
+        }
+
+        // Función para iniciar el intervalo
+        function startInterval() {
+            tipInterval = setInterval(nextTip, 15000);
+        }
+
+        // Inicializar los consejos cuando el elemento es visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    showCurrentTip();
+                    startInterval();
+                } else {
+                    clearInterval(tipInterval);
+                }
+            });
+        });
+
+        // Observar la sección de consejos
+        observer.observe(document.getElementById('tips'));
+    </script>
+</body>
+<script>
+        // Initialize the first tip immediately
+        showCurrentTip();
+        // Start the interval
+        startInterval();
     </script>
 </body>
 </html>
