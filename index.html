@@ -45,46 +45,35 @@
         .animate-pulse-whatsapp {
             animation: pulse 2s infinite;
         }
-        /* Transición suave para los consejos */
+        /* Asegurar que la imagen de perfil cubra el círculo */
+        .profile-img {
+            object-fit: cover;
+            object-position: center;
+        }
+        /* Ajuste para tarjetas de servicio para que tengan la misma altura */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+         .service-card p {
+            flex-grow: 1;
+        }
+        /* Evitar que el texto se corte */
         .consejo-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            width: auto;
+            padding: 1rem;
         }
-        .consejo-item {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .consejo-item.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Botones pequeños y suaves */
-        .btn-pastel {
-            background-color: #FFDAB9; /* Tono pastel suave (PeachPuff) */
-            color: #333;
-            border-radius: 16px;
-            padding: 8px 16px;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-        }
-        .btn-pastel:hover {
-            background-color: #FFC0CB; /* Tono pastel rosa suave */
-        }
-        /* Responsividad para móviles */
+        /* Responsividad para móviles Android e iOS */
         @media (max-width: 768px) {
             .service-card p {
                 font-size: 14px;
             }
-            .consejo-item {
+            .consejo-container {
                 font-size: 14px;
-            }
-            .btn-pastel {
-                padding: 6px 12px;
-                font-size: 12px;
             }
         }
     </style>
@@ -183,17 +172,13 @@
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold text-primary mb-8" data-aos="fade-up">Consejos para tus Pies</h2>
             <div class="bg-secondary p-8 rounded-lg shadow-md max-w-3xl mx-auto consejo-container" data-aos="zoom-in">
-                <div id="consejo-dinamico" class="text-xl text-gray-700 italic mb-4">
-                    <!-- Aquí se mostrarán los consejos dinámicamente -->
-                </div>
-                <div class="flex justify-center space-x-2 mt-4">
-                    <button id="btn-anterior" class="btn-pastel">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button id="btn-siguiente" class="btn-pastel">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+                <i class="fas fa-lightbulb text-accent text-4xl mb-4"></i>
+                <p class="text-xl text-gray-700 italic consejo-container">
+                    "Elige calzado que te acompañe, no que te dañe. Asegúrate de que tu calzado sea cómodo, flexible y adecuado a tu tipo de pisada. Evita los tacos altos o los zapatos apretados. Tus pies deben sentirse acompañados, no castigados."
+                </p>
+                <p class="text-lg text-gray-600 mt-4 consejo-container">
+                    Usa calzado adecuado a tu talla y actividad, evita andar descalzo en lugares públicos húmedos y revisa tus pies regularmente en busca de cambios.
+                </p>
             </div>
         </div>
     </section>
@@ -287,72 +272,8 @@
             once: true,
             offset: 50,
         });
-
         // Script para el año actual en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Array de consejos sin títulos
-        const consejos = [
-            "Mímate con un lavado consciente. Empieza la semana con un lavado de pies suave y con cariño. Usa agua tibia y un jabón neutro. Al terminar, sécalos bien, especialmente entre los dedos. Es un gesto simple, pero poderoso para prevenir hongos y cuidar tu piel.",
-            "Hidrata tus pies como te mereces. Después de la ducha o antes de dormir, aplica una crema hidratante específica para pies. Hazlo con un pequeño masaje. Tus pies te sostienen todo el día… ¡regálales un momento solo para ellos!",
-            "Revisa tus pies, con amor y atención. Tómate un minuto para observar tus pies. Fíjate si hay enrojecimientos, durezas, uñas encarnadas o pequeñas heridas. Detectar a tiempo cualquier cambio puede ahorrarte molestias más adelante.",
-            "Deja que respiren. Si puedes, cambia los zapatos cerrados por sandalias cómodas (¡si el clima acompaña!) o anda un rato descalzo en casa. Permitir que tus pies respiren ayuda a evitar el exceso de humedad y mantiene la piel más sana.",
-            "Elige calzado que te acompañe, no que te dañe. Asegúrate de que tu calzado sea cómodo, flexible y adecuado a tu tipo de pisada. Evita los tacos altos o los zapatos apretados. Tus pies deben sentirse acompañados, no castigados.",
-            "Mimos podológicos. Es un gran día para darte un pequeño spa de pies: un baño con sal, exfoliación suave y corte de uñas recto. Si tienes dudas o molestias, es un buen momento para agendar con tu podóloga de confianza. ¡Te esperamos con mucho cariño!",
-            "Descanso real. Dale un verdadero descanso a tus pies. Súbelos unos minutos al final del día para mejorar la circulación y relajar los músculos. Agradece todo lo que hicieron por ti esta semana y prepáralos para la próxima."
-        ];
-
-        let indiceActual = 0;
-
-        // Función para mostrar un consejo con transición
-        function mostrarConsejo(indice) {
-            const container = document.getElementById('consejo-dinamico');
-            const consejoActual = container.querySelector('.consejo-item.active');
-
-            if (consejoActual) {
-                consejoActual.classList.remove('active');
-                setTimeout(() => {
-                    consejoActual.remove();
-                    agregarConsejo(indice);
-                }, 500); // Esperar a que termine la transición
-            } else {
-                agregarConsejo(indice);
-            }
-        }
-
-        // Función para agregar un consejo al contenedor
-        function agregarConsejo(indice) {
-            const container = document.getElementById('consejo-dinamico');
-            const nuevoConsejo = document.createElement('div');
-            nuevoConsejo.className = 'consejo-item';
-            nuevoConsejo.innerHTML = consejos[indice];
-            container.appendChild(nuevoConsejo);
-
-            // Activar la transición después de un breve retraso
-            setTimeout(() => {
-                nuevoConsejo.classList.add('active');
-            }, 50);
-        }
-
-        // Mostrar el primer consejo al cargar la página
-        mostrarConsejo(indiceActual);
-
-        // Cambiar consejo automáticamente cada minuto
-        setInterval(() => {
-            indiceActual = (indiceActual + 1) % consejos.length;
-            mostrarConsejo(indiceActual);
-        }, 60000);
-
-        // Eventos para los botones de navegación
-        document.getElementById('btn-anterior').addEventListener('click', () => {
-            indiceActual = (indiceActual - 1 + consejos.length) % consejos.length;
-            mostrarConsejo(indiceActual);
-        });
-
-        document.getElementById('btn-siguiente').addEventListener('click', () => {
-            indiceActual = (indiceActual + 1) % consejos.length;
-            mostrarConsejo(indiceActual);
-        });
     </script>
 </body>
 </html>
